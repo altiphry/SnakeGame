@@ -1,0 +1,15 @@
+D:\утвоп\SnakeGame\bin\Debug\net6.0\SnakeGame.exe
+D:\утвоп\SnakeGame\bin\Debug\net6.0\SnakeGame.deps.json
+D:\утвоп\SnakeGame\bin\Debug\net6.0\SnakeGame.runtimeconfig.json
+D:\утвоп\SnakeGame\bin\Debug\net6.0\SnakeGame.dll
+D:\утвоп\SnakeGame\bin\Debug\net6.0\SnakeGame.pdb
+D:\утвоп\SnakeGame\obj\Debug\net6.0\SnakeGame.csproj.AssemblyReference.cache
+D:\утвоп\SnakeGame\obj\Debug\net6.0\SnakeGame.GeneratedMSBuildEditorConfig.editorconfig
+D:\утвоп\SnakeGame\obj\Debug\net6.0\SnakeGame.AssemblyInfoInputs.cache
+D:\утвоп\SnakeGame\obj\Debug\net6.0\SnakeGame.AssemblyInfo.cs
+D:\утвоп\SnakeGame\obj\Debug\net6.0\SnakeGame.csproj.CoreCompileInputs.cache
+D:\утвоп\SnakeGame\obj\Debug\net6.0\SnakeGame.dll
+D:\утвоп\SnakeGame\obj\Debug\net6.0\refint\SnakeGame.dll
+D:\утвоп\SnakeGame\obj\Debug\net6.0\SnakeGame.pdb
+D:\утвоп\SnakeGame\obj\Debug\net6.0\SnakeGame.genruntimeconfig.cache
+D:\утвоп\SnakeGame\obj\Debug\net6.0\ref\SnakeGame.dll
