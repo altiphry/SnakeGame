@@ -18,21 +18,26 @@ namespace SnakeGame
                     if (Console.KeyAvailable) {
                         move = ReadMove(Console.ReadKey(true).Key,move);
                     }
-                    SnakeMove(move);
-                    switch (field[headPos.Item1,headPos.Item2]) {
-                        case '#':
-                        case '%':
-                            Console.WriteLine("Game over");
-                            return ;
-                        case '$':
-                            break;
-                        default:
+                    
+
+                            field[headPos.Item1,headPos.Item2] = '%';
                             tempCoords = snake.Dequeue();
                             field[tempCoords.Item1,tempCoords.Item2] = ' ';
                             snake.Enqueue((headPos.Item1,headPos.Item2));
-                            field[headPos.Item1,headPos.Item2] = '@';
-                            break;
-                    }
+                            SnakeMove(move);
+                            switch (field[headPos.Item1,headPos.Item2]) {
+                                case '#':
+                                case '%':
+                                    Console.WriteLine("Game over");
+                                    return ;
+                                case '$':
+                                    
+                                    break;
+                                default:
+                                    field[headPos.Item1,headPos.Item2] = '@';
+                                    break;
+                            }
+                    
                         
                     for (int i = 0; i < field.GetLength(0); i++)
                     {
@@ -93,7 +98,7 @@ namespace SnakeGame
                 MakeField(field);
                 headPos = ((fieldSize.Item1+1)/2,(fieldSize.Item2+1)/2);
                 snake = new Queue<(int, int)>();
-                snake.Enqueue(headPos);
+                snake.Enqueue((headPos.Item1+1,headPos.Item2));
                 move = DirMove.Left;
             }
             private void MakeField(char[,] field) {
