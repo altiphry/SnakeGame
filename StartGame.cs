@@ -51,16 +51,14 @@ namespace SnakeGame
                         Console.WriteLine();
                     }
 
-                    Thread.Sleep(250);
+                    Thread.Sleep(150);
                         
                     
                 }
             }
             private void SpawnFood() {
                 while(true) {
-                    foodPos = (rand.Next(0,fieldSize.Item1),rand.Next(0,fieldSize.Item2));
-                    foodPos.Item1++;
-                    foodPos.Item2++;
+                    foodPos = (rand.Next(1, fieldSize.Item1-1),rand.Next(1, fieldSize.Item2-1));
                     if (field[foodPos.Item1,foodPos.Item2] != '#' && foodPos != headPos) {
                         field[foodPos.Item1,foodPos.Item2] = '$';
                         return;
@@ -107,7 +105,7 @@ namespace SnakeGame
                 }
             }
             private void InitVars() {
-                fieldSize = (20+2,50+2);
+                fieldSize = (20+2,35+2);
                 field = new char[fieldSize.Item1,fieldSize.Item2];
                 MakeField(field);
                 headPos = ((fieldSize.Item1+1)/2,(fieldSize.Item2+1)/2);
