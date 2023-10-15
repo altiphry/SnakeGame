@@ -12,9 +12,9 @@ namespace SnakeGame
             public void Start() {
                 InitVars();
                 SpawnFood();
+                Console.Clear();
                 while (true) {
-                    
-                    Console.Clear();
+                    Console.SetCursorPosition(0,0);
 
                     if (Console.KeyAvailable) {
                         move = ReadMove(Console.ReadKey(true).Key,move);
@@ -28,6 +28,8 @@ namespace SnakeGame
                             switch (field[headPos.Item1,headPos.Item2]) {
                                 case '#':
                                 case '%':
+                                    Console.CursorLeft = (fieldSize.Item2+1)/2;
+                                    Console.CursorTop = (fieldSize.Item1+1)/2;
                                     Console.WriteLine("Game over");
                                     return ;
                                 case '$':
