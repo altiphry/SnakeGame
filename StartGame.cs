@@ -1,19 +1,20 @@
 namespace SnakeGame
 {
-
         class StartGame {
             private (int,int) fieldSize = default;
             private char[,] field = default;
             private (int,int) foodPos = default;
+            Random rand = default;
             private (int,int) headPos = default;
             private Queue<(int,int)> snake = default;
             private DirMove move = default;
             (int, int) tempCoords;
             public void Start() {
                 InitVars();
+                SpawnFood();
                 while (true) {
                     
-                        Console.Clear();
+                    Console.Clear();
 
                     if (Console.KeyAvailable) {
                         move = ReadMove(Console.ReadKey(true).Key,move);
@@ -21,8 +22,7 @@ namespace SnakeGame
                     
 
                             field[headPos.Item1,headPos.Item2] = '%';
-                            tempCoords = snake.Dequeue();
-                            field[tempCoords.Item1,tempCoords.Item2] = ' ';
+                            
                             snake.Enqueue((headPos.Item1,headPos.Item2));
                             SnakeMove(move);
                             switch (field[headPos.Item1,headPos.Item2]) {
@@ -31,9 +31,12 @@ namespace SnakeGame
                                     Console.WriteLine("Game over");
                                     return ;
                                 case '$':
-                                    
+                                    field[headPos.Item1,headPos.Item2] = '@';
+                                    SpawnFood();
                                     break;
                                 default:
+                                    tempCoords = snake.Dequeue();
+                                    field[tempCoords.Item1,tempCoords.Item2] = ' ';
                                     field[headPos.Item1,headPos.Item2] = '@';
                                     break;
                             }
@@ -51,6 +54,17 @@ namespace SnakeGame
                     Thread.Sleep(250);
                         
                     
+                }
+            }
+            private void SpawnFood() {
+                while(true) {
+                    foodPos = (rand.Next(0,fieldSize.Item1),rand.Next(0,fieldSize.Item2));
+                    foodPos.Item1++;
+                    foodPos.Item2++;
+                    if (field[foodPos.Item1,foodPos.Item2] != '#' && foodPos != headPos) {
+                        field[foodPos.Item1,foodPos.Item2] = '$';
+                        return;
+                    }
                 }
             }
             private DirMove ReadMove(ConsoleKey key, DirMove prevMove) {
@@ -100,6 +114,7 @@ namespace SnakeGame
                 snake = new Queue<(int, int)>();
                 snake.Enqueue((headPos.Item1+1,headPos.Item2));
                 move = DirMove.Left;
+                rand = new Random();
             }
             private void MakeField(char[,] field) {
                 for (int i = 0; i < field.GetLength(0); i++)
@@ -110,14 +125,6 @@ namespace SnakeGame
                         else field[i,j] = ' ';
                     }
                 }
-                // for (int i = 0; i < field.GetLength(0); i++)
-                // {
-                //     for (int j = 0; j < field.GetLength(1); j++)
-                //     {
-                //         Console.Write(field[i,j]);
-                //     }
-                //     Console.WriteLine();
-                // }
             }
             public StartGame() {
                 
