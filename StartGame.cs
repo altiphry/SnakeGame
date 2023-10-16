@@ -13,6 +13,7 @@ namespace SnakeGame
                 InitVars();
                 SpawnFood();
                 Console.Clear();
+                Console.CursorVisible = false;
                 while (true) {
                     Console.SetCursorPosition(0,0);
 
@@ -61,7 +62,7 @@ namespace SnakeGame
             private void SpawnFood() {
                 while(true) {
                     foodPos = (rand.Next(1, fieldSize.Item1-1),rand.Next(1, fieldSize.Item2-1));
-                    if (field[foodPos.Item1,foodPos.Item2] != '#' && foodPos != headPos) {
+                    if (field[foodPos.Item1,foodPos.Item2] != '#' && foodPos != headPos && field[foodPos.Item1,foodPos.Item2] != '%') {
                         field[foodPos.Item1,foodPos.Item2] = '$';
                         return;
                     }
